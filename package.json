@@ -1,0 +1,21 @@
+{
+  "name": "react-astley",
+  "version": "1.0.0",
+  "description": "You know the rules and so do I",
+  "main": "index.js",
+  "repository": "https://github.com/jmackie/react-astley",
+  "author": "Jordan Mackie",
+  "license": "WTFPL",
+  "scripts": {
+    "prepare": "babel component.js --presets=@babel/preset-env --plugins=@babel/plugin-transform-react-jsx > index.js"
+  },
+  "dependencies": {
+    "react": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/cli": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/plugin-transform-react-jsx": "^7.3.0"
+  }
+}
