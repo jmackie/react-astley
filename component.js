@@ -47,7 +47,8 @@ const fullCommitment = {
   top: "0",
   right: "0",
   bottom: "0",
-  left: "0"
+  left: "0",
+  zIndex: "1000000",
 };
 
 /* TODO: make this into a sweet lorem ipsum generator */
