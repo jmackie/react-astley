@@ -1,26 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
-/* Full screen Rick. */
-export const Rickscreen = props => {
+export const Rickscreen = _props => {
+  const [count, setCount] = useState(1);
   return (
-    <marquee
-      direction="down"
-      width="100%"
-      height="100%"
-      behavior="alternate"
-      style={{ ...fullCommitment }}
-    >
-      <marquee behavior="alternate">
-        <Rickframe {...props} />
-      </marquee>
-    </marquee>
+    <>
+      {range(0, count).map(i => (
+        <Bounce key={"rick-" + i}>
+          <Rickframe
+            onClick={() => {
+              setCount(count + 1);
+            }}
+          />
+        </Bounce>
+      ))}
+    </>
   );
 };
 
-/* The simplest Rick component */
-export const Rickframe = props => {
+export const Rickframe = ({ onClick }) => {
   return (
-    <TooShy>
+    <TooShy onClick={onClick}>
       <iframe
         width="560"
         height="315"
@@ -33,12 +32,29 @@ export const Rickframe = props => {
   );
 };
 
-const TooShy = props => {
+const TooShy = ({ onClick, children }) => {
   return (
     <div style={{ position: "relative" }}>
-      <div style={{ backgroundColor: "transparent", ...fullCommitment }} />
-      {props.children}
+      <div
+        style={{ backgroundColor: "transparent", ...fullCommitment }}
+        onClick={onClick}
+      />
+      {children}
     </div>
+  );
+};
+
+const Bounce = ({ children }) => {
+  return (
+    <marquee
+      direction="down"
+      width="100%"
+      height="100%"
+      behavior="alternate"
+      style={{ ...fullCommitment }}
+    >
+      <marquee behavior="alternate">{children}</marquee>
+    </marquee>
   );
 };
 
@@ -48,7 +64,7 @@ const fullCommitment = {
   right: "0",
   bottom: "0",
   left: "0",
-  zIndex: "1000000",
+  zIndex: "1000000"
 };
 
 /* TODO: make this into a sweet lorem ipsum generator */
@@ -121,3 +137,11 @@ Never gonna make you cry
 Never gonna say goodbye
 Never gonna tell a lie and hurt you 
 `;
+
+const range = (start, stop) => {
+  let items = [];
+  for (let i = start; i < stop; i++) {
+    items.push(i);
+  }
+  return items;
+};
